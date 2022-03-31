@@ -1,0 +1,1 @@
+-- 4)) usar mod y div concatenar mod al ultimo div

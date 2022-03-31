@@ -1,19 +1,23 @@
 -- retorna el primer elemento de una lista.
 
 prim :: [a] -> a
+prim [] = undefined
 prim (x : xs) = x
 
 -- retorna toda la lista menos el primer elemento.
 fin :: [a] -> [a]
+fin [] = undefined
 fin (_ : xs) = xs
 
 --retorna el  ́ultimo elemento de la lista.
 ult :: [a] -> a
+ult [] = undefined
 ult [x] = x
 ult (x : xs) = ult xs
 
 -- retorna toda la lista menos el ultimo elemento.
 initt :: [a] -> [a]
+initt [] = []
 initt [x] = []
 initt (x : xs) = x : initt xs
 
@@ -48,32 +52,6 @@ absoluto n
   | n >= 0 = n
   | otherwise = - n
 
---Defina una funci ́on que dado un n ́umero natural, decida si el mismo es primo o no.
-
-esPrimo :: Int -> Bool
-esPrimo n = divisores n == 2
-
-{-
-Devuelve la cantidad de divisores para un número n entre 1 y n
--}
-divisores :: Int -> Int
-divisores n = divisores' n n
-
-{-
-Devuelve la cantidad de divisores para un número n entre 1 y k
--}
-divisores' :: Int -> Int -> Int
-divisores' n 1 = 1
-divisores' n k
-  | (n `mod` k) == 0 = 1 + divisores' n (k -1)
-  | otherwise = divisores' n (k -1)
-
---Defina una funcion que dado un n ́umero natural n, retorne la lista de todos los n ́umeros naturales primos menores que n.
-
-primosMenores :: Int -> [Int]
-primosMenores 0 = []
-primosMenores n = [x | x <- [1 .. n], esPrimo x]
-
 -- Defina una funcion que dada una lista, retorne la reversa de la misma.
 
 reversa :: [a] -> [a]
@@ -81,11 +59,35 @@ reversa [] = []
 reversa (x : xs) = reversa xs ++ [x]
 
 -- Defina una funcion que dadas dos listas, decida si las listas son iguales.
-
--- iguales :: Eq a => [a] -> [a] -> Bool
--- iguales [] [] = True
+--  Eq a  (que el tipo a tenga la igualdad implementada)
+iguales :: Eq a => [a] -> [a] -> Bool
+iguales [] [] = True
+iguales [] (_ : _) = False
+iguales (_ : _) [] = False
+iguales (x : xs) (y : ys) = x == y && iguales xs ys
 
 -- Defina una funcion que dada una lista decida si es un palındromo o no.
 palindromo :: Eq a => [a] -> Bool
 -- ver si tiene un elemento
+palindromo [] = False
+palindromo [x] = False
 palindromo (x : xs) = reversa (x : xs) == (x : xs)
+
+-- retorna primos
+divs :: Int -> Int -> Bool
+divs x y = mod x y == 0
+
+listaDiv :: Int -> Int -> [Int]
+listaDiv x 1 = [1]
+listaDiv x n = if divs x n then n : listaDiv x (n -1) else listaDiv x (n -1)
+
+primos :: Int -> Bool
+primos 0 = False
+primos 1 = False
+primos n = length (listaDiv n n) == 2
+
+--Defina una funcion que dado un n ́umero natural n, retorne la lista de todos los n ́umeros naturales primos menores que n.
+
+primosMenores :: Int -> [Int]
+primosMenores 0 = []
+primosMenores n = [x | x <- [1 .. n], primos x]
