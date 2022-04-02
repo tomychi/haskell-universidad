@@ -1,3 +1,5 @@
+-- practica 2
+
 -- retorna el primer elemento de una lista.
 
 prim :: [a] -> a
@@ -5,9 +7,9 @@ prim [] = undefined
 prim (x : xs) = x
 
 -- retorna toda la lista menos el primer elemento.
-fin :: [a] -> [a]
-fin [] = undefined
-fin (_ : xs) = xs
+finList :: [a] -> [a]
+finList [] = undefined
+finList (_ : xs) = xs
 
 --retorna el  ́ultimo elemento de la lista.
 ult :: [a] -> a
