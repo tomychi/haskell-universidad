@@ -15,3 +15,15 @@ componentesPQ (x1, y1, z1) (x2, y2, z2) = (a, b, c)
 
 sumVectores2d :: (Float, Float) -> (Float, Float) -> (Float, Float)
 sumVectores2d (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+
+producEscalar :: (Float, Float, Float) -> (Float, Float, Float) -> Float
+producEscalar (x1, y1, z1) (x2, y2, z2) = r
+  where
+    r = x1 * x2 + y1 * y2 + z1 * z2
+
+producVectoria :: (Float, Float, Float) -> (Float, Float, Float) -> (Float, Float, Float)
+producVectoria (u1, u2, u3) (v1, v2, v3) = (a, b, c)
+  where
+    a = (u2 * v3) - (u3 * v2)
+    b = - (u1 * v3 - u3 * v1)
+    c = (u1 * v2) - (u2 * v1)

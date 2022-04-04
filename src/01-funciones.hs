@@ -50,6 +50,20 @@ esCuadrado m
   | last (show (sqrt m)) == '0' = True
   | otherwise = False
 
+-- otra version SIN float
+cuadraPerfe :: Int -> Bool
+cuadraPerfe n
+  | potencia 0 n == 0 = False
+  | otherwise = True
+
+-- funcion que me busca la raiz cuadrada de un numero (sin usar sqrt) si no es exacta devuelve 0
+-- c = constante a burcarle la potencia,  b = base a buscar
+potencia :: Int -> Int -> Int
+potencia b c
+  | b ^ 2 < c = potencia (b + 1) c
+  | b ^ 2 == c = b
+  | otherwise = 0
+
 --Definir la funcion repetidos de forma tal que dado un elemento z y un entero n; z aparece n veces.
 
 repetir :: a -> Int -> [a]
