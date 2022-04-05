@@ -56,6 +56,14 @@ cuadraPerfe n
   | potencia 0 n == 0 = False
   | otherwise = True
 
+profeCuadrado :: Integer -> Bool
+profeCuadrado x = y ^ 2 == x
+  where
+    y = round (sqrt (fromInteger x))
+
+cuadradoPorComprension :: Int -> Bool
+cuadradoPorComprension n = [x | x <- [0 .. n], x * x == n] /= []
+
 -- funcion que me busca la raiz cuadrada de un numero (sin usar sqrt) si no es exacta devuelve 0
 -- c = constante a burcarle la potencia,  b = base a buscar
 potencia :: Int -> Int -> Int
@@ -77,10 +85,12 @@ empezando a numerar desde el 0. Por ejemplo,
 nelem [1,3,2,4,9,7] 3 → 4
 -}
 
-nelem :: [a] -> Int -> a
-nelem [] n = error "NO hay elementos en la lista"
+-- data Maybe  a = Nothing | Just a
+
+nelem :: [Int] -> Int -> Maybe Int
+nelem [] n = Nothing
 nelem (x : xs) n
-  | length (x : xs) <= n = error "NO hay elementos en esa posicion"
-  | n == 0 = x
+  | length (x : xs) <= n = Nothing
+  | n == 0 = Just x
   | n > 0 = nelem xs (n -1)
-  | n < 0 = error "no puedes ingresar numeros negativos"
+  | n < 0 = Nothing
