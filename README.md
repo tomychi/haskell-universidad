@@ -30,7 +30,8 @@ ghci
 ```
 ### Corremos el codigo
 ```
-:l <folder_name>.hs
+:l <folder_name>.hs  
+:r <actuliza el codigo, si modificaste el archivo, sin tener que salir del ghci>
 ```
 
 ## Despliegue 📦
