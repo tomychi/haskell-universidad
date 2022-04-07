@@ -1,3 +1,4 @@
+# Practica 4
 - expreiones canonicas determinan 1 valor q se puede escribir de varias formas 
 - forma normal es la expresion canonica
 - para llevar a forma canonica
