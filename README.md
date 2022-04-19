@@ -56,7 +56,7 @@ Usamos [Git](https://git-scm.com/) para el versionado.
 ## Autores ✒️
 
 * **Tomás Arcostanzo** - *Trabajo Inicial* - [Tomychi](https://github.com/tomychi)
-
+* **Uriel Guzman** - *Contribucion* - [Uri](https://github.com/)
 
 
 ## Licencia 📄
