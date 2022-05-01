@@ -6,9 +6,9 @@
 - y el orden normal
 
 ## Orden Aplicativo: 
-- se reduce siempre la expresion m ́as adento y mas a la izquierda.
+- se reduce siempre la expresion mas adento y mas a la izquierda.
 ## Orden Normal: 
-- se reduce siempre la expresion m ́as afuera y mas a la izquierda
+- se reduce siempre la expresion mas afuera y mas a la izquierda
 - si hay una forma normal, la reduccion normal la encuentra siempre 
 
 ## evaluacion lazy
