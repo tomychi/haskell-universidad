@@ -83,6 +83,16 @@ multi :: Nat -> Nat -> Nat
 multi Zero n = Zero
 multi (Succ a) n = suma (multi a n) n
 
+listana :: [Nat] -> [Int]
+listana [] = []
+listana [Zero] = [0]
+listana (x:xs) = natToInt x:listana xs
+
+natm :: [Nat] -> [Nat]
+natm [] = []
+natm [Zero] = [Zero]
+natm (x:xs) = Succ (Succ Zero) `multi` x:natm xs
+
 ispar :: Nat -> Bool
 ispar Zero = True
 ispar (Succ Zero) = False

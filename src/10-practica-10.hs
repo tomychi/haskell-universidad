@@ -14,3 +14,77 @@ elemIgual y (x:xs) = (x == y) && elemIgual y xs
 minimo :: [Int] -> Int
 minimo [] = maxInt
 minimo (x:xs) = x `min` minimo xs
+
+{-
+Ejercicio 6. Especificar y derivar una funci ́on que dada una lista determina si
+existe un elemento en ella que sea igual a la suma del resto de los elementos de
+la lista.
+-}
+igualasuma :: [Int] -> Bool
+igualasuma xs = compx xs 0
+
+compx :: [Int] -> Int -> Bool
+compx [] n = False
+compx (x:xs) n = x == (n + sum xs) || compx xs (x + n)
+
+cantParImpar :: [Int] -> (Int, Int)
+cantParImpar [] = (0, 0)
+cantParImpar (x:xs)
+  | even x = (1 + a, b)
+  | otherwise = (a, b + 1)
+  where
+    (a, b) = cantParImpar xs
+
+{-
+ejercicio 7
+P xs.ys = (∃as, bs :: ys = as + +xs + +bs),
+que dadas dos listas determina si la primera es subsegmento de la segunda.
+-}
+subIgual :: (Eq a) => [a] -> [a] -> Bool
+subIgual [] ys = True
+subIgual xs [] = False
+subIgual (x:xs) (y:ys) = y == x && subEqual xs ys || subIgual (x:xs) ys
+
+subEqual :: (Eq a) => [a] -> [a] -> Bool
+subEqual [] ys = True
+subEqual xs [] = False
+subEqual (x:xs) (y:ys) = y == x || subEqual xs ys
+
+
+suma :: Int -> [Int] -> Bool
+suma 0 xs = True
+ 
+
+
+
+listMerge :: (Ord a) => [a] -> [a] -> [a]
+listMerge xs [] = xs
+listMerge [] ys = ys
+listMerge (x:xs) (y:ys)
+  | x <= y = x:listMerge xs (y:ys)
+  | otherwise = y:listMerge (x:xs) ys
+
+msort :: Ord a => [a] -> [a]
+msort [] = []
+msort [a] = [a]
+msort xs = listMerge (msort (firstHalf xs)) (msort (secondHalf xs))
+  where
+    firstHalf xs = let n = length xs
+                   in take (div n 2) xs
+
+    secondHalf xs = let n = length xs
+                    in drop (div n 2) xs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
