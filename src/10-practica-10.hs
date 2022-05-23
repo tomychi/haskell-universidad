@@ -50,12 +50,10 @@ subEqual [] ys = True
 subEqual xs [] = False
 subEqual (x:xs) (y:ys) = y == x || subEqual xs ys
 
-
-suma :: Int -> [Int] -> Bool
-suma 0 xs = True
- 
-
-
+sumarigual :: Int -> [Int] -> Bool
+sumarigual 0 [] = True
+sumarigual n [] = False
+sumarigual n (x:xs) = sum (x:xs) == n || sumarigual n xs
 
 listMerge :: (Ord a) => [a] -> [a] -> [a]
 listMerge xs [] = xs
@@ -75,13 +73,17 @@ msort xs = listMerge (msort (firstHalf xs)) (msort (secondHalf xs))
     secondHalf xs = let n = length xs
                     in drop (div n 2) xs
 
+sumar :: Int -> [Int] -> Bool
+sumar h []
+  | h == 0 = True
+  | otherwise = False
+sumar h (x:xs) = sumar h xs || sumaSig h (x:xs)
 
-
-
-
-
-
-
+sumaSig :: Int -> [Int] -> Bool
+sumaSig m []
+  | m == 0 = True
+  | otherwise = False
+sumaSig m (x:xs) = m == 0 || sumaSig (m - x) xs
 
 
 
